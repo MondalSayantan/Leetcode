@@ -1,9 +1,9 @@
 class Solution {
     public int fib(int n) {
-        return fibonacci(n);
+        return fibonacci(n, new HashMap<Integer,Integer>());
     }
     
-    private static int fibonacci(int n) {
+    private static int fibonacci(int n, HashMap<Integer,Integer> memo) {
         
         if (n == 0)
             return 0;
@@ -11,7 +11,16 @@ class Solution {
         if (n == 1)
             return 1;
         
-        return fibonacci(n-1) + fibonacci(n-2);
+        int currentKey = n;
+        
+        if(memo.containsKey(currentKey))
+            return memo.get(currentKey);
+        
+        int result = fibonacci(n-1, memo) + fibonacci(n-2, memo);
+        
+        memo.put(currentKey, result);
+        
+        return result;
         
     }
 }
