@@ -136,7 +136,8 @@ class Tree
             return;
         }
         
-        if(!memo.containsKey(currentLevel)) {
+        // if(!memo.containsKey(currentLevel)) {
+        if(answer.size() == currentLevel) {
             answer.add(root.data);
             memo.put(currentLevel, root.data);
         }
