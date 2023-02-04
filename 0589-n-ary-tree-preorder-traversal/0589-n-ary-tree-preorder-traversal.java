@@ -20,19 +20,21 @@ class Node {
 class Solution {
     public List<Integer> preorder(Node root) {
         List<Integer> answer = new ArrayList<>();
-        preorder(root, answer);
-        return answer;
-    }
-    
-    private static void preorder(Node root, List<Integer> answer) {
+        Stack<Node> stack = new Stack<>();
+        
         if(root == null)
-            return;
+            return answer;
         
-        answer.add(root.val);
+        stack.push(root);
         
-        for(Node currentChild: root.children)
-            preorder(currentChild, answer);
+        while(!stack.isEmpty()) {
+            Node currentNode = stack.pop();
+            answer.add(currentNode.val);
+            
+            for(int i = currentNode.children.size() - 1; i >= 0; i--)
+                stack.push(currentNode.children.get(i));
+        }
         
-        return;
+        return answer;
     }
 }
