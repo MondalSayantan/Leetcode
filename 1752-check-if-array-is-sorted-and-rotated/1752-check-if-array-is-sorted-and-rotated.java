@@ -6,7 +6,7 @@ class Solution {
                 if (pivotalPoint != -1) {
                     return false;
                 }
-                pivotalPoint = i;
+                pivotalPoint++;
             }
         }
 
