@@ -49,12 +49,14 @@ class Node {
 class Solution {
     static boolean searchKey(int n, Node head, int key) {
         // Code here
-        Node current = head;
-        for(int i = 0; i < n; i++) {
-            if(current.data == key)
-                return true;
-            current = current.next;
-        }
-        return false;
+        return search(head, key);
+    }
+    
+    static boolean search(Node head, int key){
+        if(head == null)
+            return false;
+        if(head.data == key)
+            return true;
+        return search(head.next, key);
     }
 }
